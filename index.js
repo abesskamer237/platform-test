@@ -1,13 +1,18 @@
+```javascript id="v4w5x6"
 const express = require('express');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Platform.sh fonctionne 🚀');
-});
+app.use('/', createProxyMiddleware({
+    target: 'http://TON_IP_VPS:TON_PORT',
+    changeOrigin: true,
+    ws: true
+}));
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Serveur lancé sur ${PORT}`);
+    console.log(`Proxy running on ${PORT}`);
 });
+```
