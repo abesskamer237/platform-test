@@ -4,9 +4,10 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 
 app.use('/', createProxyMiddleware({
-target: 'http://209.38.100.163:443',
+target: 'https://16.170.31.170',
 changeOrigin: true,
-ws: true
+ws: true,
+secure: false
 }));
 
 const PORT = process.env.PORT || 3000;
