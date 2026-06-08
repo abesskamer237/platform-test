@@ -1,0 +1,17 @@
+applications:
+app:
+source:
+root: "/"
+
+```
+type: "nodejs:20"
+
+web:
+  commands:
+    start: node index.js
+```
+
+routes:
+"https://{default}/":
+type: upstream
+upstream: "app:http"
