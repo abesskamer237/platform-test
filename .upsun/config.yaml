@@ -1,21 +1,11 @@
-```yaml id="o3fj7h"
 applications:
-  myapp:
-    type: 'nodejs:22'
-
-    hooks:
-      build: 'npm install && npm run build'
-
-    web:
-      commands:
-        start: 'npm start'
-
-services:
-  db:
-    type: 'postgresql:16'
+app:
+type: "nodejs:20"
+web:
+commands:
+start: "npm start"
 
 routes:
-  'https://{default}/':
-    type: upstream
-    upstream: 'myapp:http'
-```
+"https://{default}/":
+type: upstream
+upstream: "app:http"
