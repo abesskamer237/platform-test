@@ -1,0 +1,11 @@
+```yaml id="p7q8r9"
+name: app
+
+type: 'nodejs:20'
+
+web:
+  commands:
+    start: "node index.js"
+
+disk: 512
+```
