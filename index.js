@@ -1,4 +1,4 @@
-```javascript id="v4w5x6"
+```javascript id="zfdjvx"
 const express = require('express');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 
@@ -13,6 +13,6 @@ app.use('/', createProxyMiddleware({
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Proxy running on ${PORT}`);
+    console.log(`Reverse proxy running on ${PORT}`);
 });
 ```
