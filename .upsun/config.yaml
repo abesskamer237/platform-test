@@ -1,22 +1,36 @@
+
+---
+
+# Ton fichier doit devenir EXACTEMENT :
+
+:::writing{variant="standard" id="51248"}
 applications:
-c-users-glc-platform-test:
-type: "nodejs:24"
+  c-users-glc-platform-test:
+    type: "nodejs:24"
 
-```
-web:
-  commands:
-    start: "node index.js"
+    web:
+      commands:
+        start: "node index.js"
 
-  locations:
-    "/":
-      passthru: true
+      locations:
+        "/":
+          passthru: true
 
-hooks:
-  build: |
-    npm install
-```
+    hooks:
+      build: |
+        npm install
 
 routes:
-"https://{default}/":
-type: upstream
-upstream: "c-users-glc-platform-test:http"
+  "https://{default}/":
+    type: upstream
+    upstream: "c-users-glc-platform-test:http"
+:::
+
+---
+
+# Ensuite
+
+```powershell id="a4"
+git add .
+git commit -m "Remove broken markdown"
+git push origin main
