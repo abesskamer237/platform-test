@@ -1,9 +1,3 @@
-
----
-
-# Ton fichier doit devenir EXACTEMENT :
-
-:::writing{variant="standard" id="51248"}
 applications:
   c-users-glc-platform-test:
     type: "nodejs:24"
@@ -24,13 +18,3 @@ routes:
   "https://{default}/":
     type: upstream
     upstream: "c-users-glc-platform-test:http"
-:::
-
----
-
-# Ensuite
-
-```powershell id="a4"
-git add .
-git commit -m "Remove broken markdown"
-git push origin main
