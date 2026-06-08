@@ -1,14 +1,22 @@
-```yaml
+```yaml id="m8n7b6"
 applications:
   app:
-    type: "nodejs:20"
-
     source:
       root: "/"
 
+    type: "nodejs:20"
+
+    build:
+      flavor: none
+
+    hooks:
+      build: |
+        set -ex
+        npm install
+
     web:
       commands:
-        start: "node index.js"
+        start: node index.js
 
 routes:
   "https://{default}/":
