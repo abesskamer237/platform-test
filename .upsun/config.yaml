@@ -1,17 +1,21 @@
+```yaml
 applications:
-app:
-source:
-root: "/"
+  app:
+    source:
+      root: "/"
 
-```
-type: "nodejs:20"
+    type: "nodejs:20"
 
-web:
-  commands:
-    start: node index.js
-```
+    web:
+      commands:
+        start: "node index.js"
+
+      locations:
+        "/":
+          passthru: true
 
 routes:
-"https://{default}/":
-type: upstream
-upstream: "app:http"
+  "https://{default}/":
+    type: upstream
+    upstream: "app:http"
+```
