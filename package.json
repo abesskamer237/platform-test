@@ -1,6 +1,15 @@
-```json id="s1t2u3"
-"dependencies": {
-  "express": "^4.18.2",
-  "http-proxy-middleware": "^2.0.6"
+```json id="xmqf6r"
+{
+  "name": "platform-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo Build terminé",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6"
+  }
 }
 ```
