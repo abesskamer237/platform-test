@@ -1,10 +1,10 @@
-```yaml id="p7q8r9"
+```yaml
 applications:
   app:
+    type: "nodejs:20"
+
     source:
       root: "/"
-
-    type: "nodejs:20"
 
     web:
       commands:
