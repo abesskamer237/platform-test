@@ -1,25 +1,24 @@
-```yaml id="m8n7b6"
+# Upsun configuration, generated using AI at: 2026-06-08T14:03:43.745Z
+# AI can make mistakes. Please modify this file to suit your needs.
 applications:
   app:
-    source:
-      root: "/"
-
-    type: "nodejs:20"
-
+    type: nodejs:24
     build:
       flavor: none
-
     hooks:
       build: |
         set -ex
-        npm install
-
+        npm ci --omit=dev
+        npm run build
     web:
       commands:
-        start: node index.js
-
-routes:
-  "https://{default}/":
-    type: upstream
-    upstream: "app:http"
-```
+        start: sleep infinity
+      locations:
+        /:
+          root: dist
+          index: [index.html]
+          scripts: false
+          expires: 24h
+          rules:
+            '\.(css|js|gif|jpe?g|png|svg|webp)$':
+              expires: 4w
