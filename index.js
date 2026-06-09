@@ -1,29 +1,23 @@
-const express = require('express');
-const { createProxyMiddleware } = require('http-proxy-middleware');
+const http = require('http');
+const https = require('https');
+const PORT = process.env.PORT || 8888;
 
-const app = express();
+http.createServer((req, res) => {
+  const options = {
+    hostname: '16.170.31.170',
+    port: 443,
+    path: req.url,
+    method: req.method,
+    headers: req.headers,
+    rejectUnauthorized: false,
+  };
 
-app.use('/', createProxyMiddleware({
-  target: 'https://16.170.31.170:443',
-  changeOrigin: true,
-  ws: true,
-  secure: false,
-  xfwd: true,
+  const proxy = https.request(options, (r) => {
+    res.writeHead(r.statusCode, r.headers);
+    r.pipe(res);
+  });
 
-  onProxyReq(proxyReq, req, res) {
-    proxyReq.setHeader('Host', req.headers.host);
-  },
+  proxy.on('error', () => { res.writeHead(502); res.end(); });
+  req.pipe(proxy);
 
-  onError(err, req, res) {
-    res.writeHead(500, {
-      'Content-Type': 'text/plain',
-    });
-    res.end('Proxy error');
-  }
-}));
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Reverse proxy running on ${PORT}`);
-});
+}).listen(PORT, () => console.log('Proxy actif sur', PORT));
