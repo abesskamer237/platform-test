@@ -4,7 +4,7 @@ const PORT = process.env.PORT || 8888;
 
 http.createServer((req, res) => {
   const options = {
-    hostname: '16.170.31.170',
+    hostname: 16.170.31.170,
     port: 443,
     path: req.url,
     method: req.method,
