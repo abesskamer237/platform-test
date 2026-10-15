@@ -2,8 +2,8 @@ const http = require('http');
 const httpProxy = require('http-proxy');
 
 // Configuration
-const TARGET_HOST = 2.25.160.2;   // Adresse IP de ton VPS
-const TARGET_PORT = 443;            // Port où ton VPS écoute (ex: 443 pour VLESS+WS+TLS, ou 22 pour SSH over WebSocket)
+const TARGET_HOST = process.env.TARGET_HOST || "2.25.160.2";   // Adresse IP de ton VPS
+const TARGET_PORT = process.env.TARGET_PORT || 443;            // Port où ton VPS écoute (ex: 443 pour VLESS+WS+TLS, ou 22 pour SSH over WebSocket)
 const PROXY_PORT = process.env.PORT || 8080;  // Port local d'écoute (Upsun impose souvent 8080 en HTTP, mais tu peux aussi écouter en HTTPS si fourni par Upsun)
 
 // Créer le proxy
